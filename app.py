@@ -175,12 +175,9 @@ if input_option == 'Upload ZIP File':
             st.success(f'Detected Common CSS Fields: {", ".join(common_css_fields)}')
 
 # Process Input
-selected_file_index = st.selectbox('Select File to Edit:', range(len(file_paths)), index=0) if file_paths else None
-if input_option == 'Manual Input' and selected_file_index is not None:
-    selected_file = file_paths[selected_file_index]
-
-    with open(selected_file, 'r', encoding='utf-8') as file:
-        original_code = file.read()
+if input_option == 'Manual Input':
+    original_code = st.text_area('Enter Combined Email Template Code', height=300)
+    if st.button('Separate Code'):
         liquid_code, html_code, css_code, js_code = separate_code(original_code)
 
         st.subheader('Liquid Code')
@@ -207,6 +204,8 @@ if input_option == 'Manual Input' and selected_file_index is not None:
             st.code(final_template)
 
 elif input_option == 'Upload ZIP File' and len(file_paths) > 0:
+    selected_file_index = st.selectbox('Select File to Edit:', range(len(file_paths)), index=0)
+
     if selected_file_index is not None:
         selected_file = file_paths[selected_file_index]
 
