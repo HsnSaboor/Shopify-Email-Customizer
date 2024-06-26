@@ -41,6 +41,7 @@ prompt += f"   - Button Text Color: {global_styles['button_text_color']}\n"
 prompt += f"   - Button Corner Radius: {global_styles['button_radius']}px\n"
 prompt += f"   - Logo URL: {global_styles['logo_url']}\n\n"
 prompt += f"2. Add a Attractive greetings at start of email (CTA) to the email template using emojis.\n"
+prompt += f"7. Add customer first name in subject and a emoji with a greeting like Hi! customer's name SUBJECT
 prompt += f"3. Add a call-to-action (CTA) to the email template using emojis.\n"
 prompt += f"4. Use customer-related Liquid variables to personalize the email.\n"
 prompt += f"5. If this email is only sent to those who have purchased at least once, give them a discount code 'NEXTORDER'. Make it copyable and add a copy to clipboard function for elements like tracking number, discount codes, etc.\n\n"
