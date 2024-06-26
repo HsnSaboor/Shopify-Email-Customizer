@@ -33,6 +33,7 @@ st.header('ChatGPT Prompt')
 
 # Generate ChatGPT prompt
 prompt = f"Enhance the Shopify email template with the following modifications:\n\n"
+prompt += f"8. keep the code structure the same:\n"
 prompt += f"1. Apply global styles:\n"
 prompt += f"   - Background Color: {global_styles['bg_color']}\n"
 prompt += f"   - Text Color: {global_styles['text_color']}\n"
