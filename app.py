@@ -44,6 +44,7 @@ prompt += f"2. Add a Attractive greetings at start of email (CTA) to the email t
 prompt += f"3. Add a call-to-action (CTA) to the email template using emojis.\n"
 prompt += f"4. Use customer-related Liquid variables to personalize the email.\n"
 prompt += f"5. If this email is only sent to those who have purchased at least once, give them a discount code 'NEXTORDER'. Make it copyable and add a copy to clipboard function for elements like tracking number, discount codes, etc.\n\n"
+prompt += f"6. keep the all the spacings paddings same and remove the my comapnies address if mentioned anywhere i.e 28 Mosedale Way .... UK\n\n"
 prompt += f"Original Email Template's Subject:\n\n"
 prompt += f"```\n{original_subject}\n```\n"
 prompt += f"Original Email Template HTML Code:\n\n"
