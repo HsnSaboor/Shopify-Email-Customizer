@@ -13,8 +13,8 @@ global_styles = {
     'button_text_color': st.sidebar.color_picker('Button Text Color'),
     'button_radius': st.sidebar.slider('Button Corner Radius', min_value=0, max_value=20, value=0),
     'table_color': st.sidebar.color_picker('Table lines color'),
-    'link_color': st.sidebar.color_picker('Table lines color'),
-    'product_title_color': st.sidebar.color_picker('Table lines color'),
+    'link_color': st.sidebar.color_picker('Link color'),
+    'product_title_color': st.sidebar.color_picker('Product Title color'),
     'logo_url': st.sidebar.text_input('Logo URL')
 }
 
