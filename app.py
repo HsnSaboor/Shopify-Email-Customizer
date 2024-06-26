@@ -58,6 +58,7 @@ prompt += f"Original Email Template's Subject:\n\n"
 prompt += f"```\n{original_subject}\n```\n"
 prompt += f"Original Email Template HTML Code:\n\n"
 prompt += f"```\n{original_code}\n```\n"
+prompt += f"10. Ensure all kinds of stylink sizzes and css is correct and fix any if not\n"
 
 st.code(prompt, language='markdown')
 
