@@ -24,9 +24,9 @@ st.header('Original Email Template')
 original_code = st.text_area('Enter Original Email Template HTML Code', height=300)
 
 # Original Email Template Subject
-st.header('Original Email Template's Subject')
+st.header("Original Email Template's Subject")
 
-original_subject = st.text_area('Enter Original Email Template's Subject', height=50)
+original_subject = st.text_area("Enter Original Email Template's Subject", height=50)
 
 # Prompt Generation
 st.header('ChatGPT Prompt')
