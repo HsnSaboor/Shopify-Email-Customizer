@@ -52,32 +52,36 @@ def update_template(liquid_code, html_code, css_code, js_code):
 # Streamlit app
 st.title('Advanced Shopify Email Template Editor')
 
-template = st.text_area("Enter Shopify Email Template Code", height=300)
+uploaded_file = st.file_uploader("Upload a Shopify Email Template File", type=['html', 'css', 'js'])
 
-if st.button('Separate Code'):
-    liquid_code, html_code, css_code, js_code = separate_code(template)
-    st.subheader('Liquid Code')
-    st.code('\n'.join(liquid_code))
+if uploaded_file is not None:
+    file_content = uploaded_file.read().decode("utf-8")
+    st.text_area("File Content", value=file_content, height=300)
 
-    st.subheader('HTML Code')
-    st.code(html_code)
+    if st.button('Separate Code'):
+        liquid_code, html_code, css_code, js_code = separate_code(file_content)
+        st.subheader('Liquid Code')
+        st.code('\n'.join(liquid_code))
 
-    st.subheader('CSS Code')
-    st.code(css_code)
+        st.subheader('HTML Code')
+        st.code(html_code)
 
-    st.subheader('JavaScript Code')
-    st.code(js_code)
+        st.subheader('CSS Code')
+        st.code(css_code)
 
-    st.success("Code separated successfully!")
+        st.subheader('JavaScript Code')
+        st.code(js_code)
 
-# Update Template Section
-if st.button('Get Final Template'):
-    new_html_code = st.text_area("Enter Updated HTML Code", height=200)
-    new_css_code = st.text_area("Enter Updated CSS Code", height=200)
+        st.success("Code separated successfully!")
 
-    updated_template = update_template(liquid_code, new_html_code, new_css_code, js_code)
-    st.subheader('Updated Shopify Email Template')
-    st.code(updated_template)
+    # Update Template Section
+    if st.button('Get Final Template'):
+        new_html_code = st.text_area("Enter Updated HTML Code", height=200, key='new_html')
+        new_css_code = st.text_area("Enter Updated CSS Code", height=200, key='new_css')
+
+        updated_template = update_template(liquid_code, new_html_code, new_css_code, js_code)
+        st.subheader('Updated Shopify Email Template')
+        st.code(updated_template)
 
 st.markdown("""
 <style>
