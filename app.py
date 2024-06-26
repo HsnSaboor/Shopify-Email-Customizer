@@ -11,6 +11,7 @@ global_styles = {
     'text_color': st.sidebar.color_picker('Text Color'),
     'button_bg_color': st.sidebar.color_picker('Button Background Color'),
     'button_text_color': st.sidebar.color_picker('Button Text Color'),
+    'button_radius': st.sidebar.slider('Button Corner Radius', min_value=0, max_value=20, value=0),
     'logo_url': st.sidebar.text_input('Logo URL')
 }
 
@@ -32,6 +33,7 @@ prompt += f"   - Background Color: {global_styles['bg_color']}\n"
 prompt += f"   - Text Color: {global_styles['text_color']}\n"
 prompt += f"   - Button Background Color: {global_styles['button_bg_color']}\n"
 prompt += f"   - Button Text Color: {global_styles['button_text_color']}\n"
+prompt += f"   - Button Corner Radius: {global_styles['button_radius']}px\n"
 prompt += f"   - Logo URL: {global_styles['logo_url']}\n\n"
 prompt += f"2. Add a call-to-action (CTA) to the email template using emojis.\n"
 prompt += f"3. Use customer-related Liquid variables to personalize the email.\n"
