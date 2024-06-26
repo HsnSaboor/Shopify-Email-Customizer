@@ -13,6 +13,8 @@ global_styles = {
     'button_text_color': st.sidebar.color_picker('Button Text Color'),
     'button_radius': st.sidebar.slider('Button Corner Radius', min_value=0, max_value=20, value=0),
     'table_color': st.sidebar.color_picker('Table lines color'),
+    'link_color': st.sidebar.color_picker('Table lines color'),
+    'product_title_color': st.sidebar.color_picker('Table lines color'),
     'logo_url': st.sidebar.text_input('Logo URL')
 }
 
@@ -42,7 +44,9 @@ prompt += f"   - Text Color: {global_styles['text_color']}\n"
 prompt += f"   - Button Background Color: {global_styles['button_bg_color']}\n"
 prompt += f"   - Button Text Color: {global_styles['button_text_color']}\n"
 prompt += f"   - Button Corner Radius: {global_styles['button_radius']}px\n"
-prompt += f"   - Table Lines Color: {global_styles['table_color']}\n"
+prompt += f"   - Table Lines Color do not add borders: {global_styles['table_color']}\n"
+prompt += f"   - Link Color: {global_styles['link_color']}\n"
+prompt += f"   - Product Title Color: {global_styles['product_title_color']}\n"
 prompt += f"   - Logo In HEADER in centre: add the shop's logo using its field / liquid variable or use this link{global_styles['logo_url']}\n\n"
 prompt += f"2. Add a Attractive greetings at start / first line of email and add customers name in it as well  of email and add emojis to it  (CTA) to the email template using emojis.\n"
 prompt += f"7. Add customer first name in subject and a emoji with a greeting like Hi! customer's name SUBJECT. \n"
