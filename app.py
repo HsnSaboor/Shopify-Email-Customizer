@@ -3,9 +3,8 @@ import streamlit as st
 # Streamlit app
 st.title('Shopify Email Template Editor')
 
-st.sidebar.header('Global Styles')
-
 # Global Style Options
+st.sidebar.header('Global Styles')
 global_styles = {
     'bg_color': st.sidebar.color_picker('Background Color'),
     'text_color': st.sidebar.color_picker('Text Color'),
@@ -18,8 +17,9 @@ global_styles = {
     'logo_url': st.sidebar.text_input('Logo URL')
 }
 
-st.sidebar.markdown('---')
-st.sidebar.text('© 2024 Shopify Editor')
+# Option to input HTML <style> code
+st.sidebar.header('Input HTML Styles Code')
+html_styles_code = st.sidebar.text_area('Enter HTML Styles Code', height=200)
 
 # Original Email Template Input
 st.header('Original Email Template')
@@ -31,37 +31,41 @@ st.header("Original Email Template's Subject")
 
 original_subject = st.text_area("Enter Original Email Template's Subject", height=50)
 
-# Prompt Generation
-st.header('ChatGPT Prompt')
-
 # Generate ChatGPT prompt
 prompt = f"Enhance the Shopify email template with the following modifications:\n\n"
-prompt += f"8. keep the code structure the same:\n"
-prompt += f"9. Align everything in the centre\n"
-prompt += f"1. Apply global styles:\n"
-prompt += f"   - Background Color: {global_styles['bg_color']}\n"
-prompt += f"   - Text Color: {global_styles['text_color']}\n"
-prompt += f"   - Button Background Color: {global_styles['button_bg_color']}\n"
-prompt += f"   - Button Text Color: {global_styles['button_text_color']}\n"
-prompt += f"   - Button Corner Radius: {global_styles['button_radius']}px\n"
-prompt += f"   - Table Lines Color do not add borders: {global_styles['table_color']}\n"
-prompt += f"   - Link Color: {global_styles['link_color']}\n"
-prompt += f"   - Product Title Color: {global_styles['product_title_color']}\n"
-prompt += f"   - Logo In HEADER in centre: add the shop's logo using its field / liquid variable and make the logo url default value and  use this link{global_styles['logo_url']}\n\n"
-prompt += f"2. Add a Attractive greetings at start / first line of email and add customers name in it as well  of email and add emojis to it  (CTA) to the email template using emojis.\n"
-prompt += f"7. Add customer first name in subject and a emoji with a greeting like Hi! customer's name SUBJECT. \n"
-prompt += f"3. Add a call-to-action (CTA) to the email template using emojis.\n"
-prompt += f"4. Use customer-related Liquid variables to personalize the email.\n"
-prompt += f"5. If this email is only sent to those who have purchased at least once, give them a discount code 'NEXTORDER'. Make it copyable and add a copy to clipboard function for elements like tracking number, discount codes, etc.\n\n"
-prompt += f"6. Add some left padding to all items keep buttons in the centre and remove the my comapnies address if mentioned anywhere i.e 28 Mosedale Way .... UK\n\n"
-prompt += f"Original Email Template's Subject:\n\n"
-prompt += f"```\n{original_subject}\n```\n"
-prompt += f"Original Email Template HTML Code:\n\n"
-prompt += f"```\n{original_code}\n```\n"
-prompt += f"10. Ensure all kinds of stylink sizzes and css is correct and fix any if not\n"
+prompt += f"1. Keep the existing structure intact and centered.\n"
+prompt += f"2. Apply global styles:\n"
+if any(global_styles.values()):
+    prompt += f"   - Background Color: {global_styles['bg_color']}\n"
+    prompt += f"   - Text Color: {global_styles['text_color']}\n"
+    prompt += f"   - Button Background Color: {global_styles['button_bg_color']}\n"
+    prompt += f"   - Button Text Color: {global_styles['button_text_color']}\n"
+    prompt += f"   - Button Corner Radius: {global_styles['button_radius']}px\n"
+    prompt += f"   - Table Lines Color: {global_styles['table_color']}\n"
+    prompt += f"   - Link Color: {global_styles['link_color']}\n"
+    prompt += f"   - Product Title Color: {global_styles['product_title_color']}\n"
+    prompt += f"   - Logo in Header: Add the shop's logo using its liquid variable, default URL: {global_styles['logo_url']}\n\n"
 
-st.code(prompt, language='markdown')
+# Include HTML styles section if provided
+if html_styles_code:
+    prompt += f"3. Apply custom styles from HTML <style> code:\n"
+    prompt += f"```\n{html_styles_code}\n```\n"
+
+prompt += f"4. Add an attractive greeting at the start of the email, incorporating the customer's name and emojis for Call-to-Action (CTA).\n"
+prompt += f"5. Personalize the subject with the customer's first name and include a greeting and emoji (e.g., Hi! Customer's Name SUBJECT).\n"
+prompt += f"6. Implement a Call-to-Action (CTA) using emojis.\n"
+prompt += f"7. Utilize Liquid variables for personalized content.\n"
+prompt += f"8. Provide a discount code 'NEXTORDER' for repeat customers, with a copy-to-clipboard feature for easy use.\n"
+prompt += f"9. Ensure all styling is consistent and correct, fixing any discrepancies.\n"
+
+st.markdown(prompt)
+
+# Display inputted HTML styles code
+if html_styles_code:
+    st.header('Inputted HTML Styles Code')
+    st.code(html_styles_code, language='html')
 
 # Clear Input Field
 if st.button('Clear Input'):
     st.text_area('Enter Original Email Template HTML Code', value='', height=300)
+    st.text_area('Enter HTML Styles Code', value='', height=200)
